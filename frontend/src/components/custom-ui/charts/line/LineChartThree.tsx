@@ -1,5 +1,5 @@
 import { TrendingUp } from "lucide-react";
-import { Bar, BarChart, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Line, LineChart, XAxis } from "recharts";
 
 import {
   Card,
@@ -31,38 +31,43 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function BarChartTwo() {
+export default function LineChartThree() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart Two</CardTitle>
+        <CardTitle>Line Chart Three</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <BarChart
+          <LineChart
             accessibilityLayer
             data={chartData}
-            layout="vertical"
             margin={{
-              left: -20,
+              left: 12,
+              right: 12,
             }}
           >
-            <XAxis type="number" dataKey="desktop" hide />
-            <YAxis
+            <CartesianGrid vertical={false} />
+            <XAxis
               dataKey="month"
-              type="category"
               tickLine={false}
-              tickMargin={10}
               axisLine={false}
+              tickMargin={8}
               tickFormatter={(value) => value.slice(0, 3)}
             />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={5} />
-          </BarChart>
+            <Line
+              dataKey="desktop"
+              type="step"
+              stroke="var(--color-desktop)"
+              strokeWidth={2}
+              dot={false}
+            />
+          </LineChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">

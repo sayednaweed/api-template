@@ -49,11 +49,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function PieChartOne() {
+export default function PieChartTwo() {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart One</CardTitle>
+        <CardTitle>Pie Chart Two</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
@@ -66,7 +66,12 @@ export default function PieChartOne() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Pie data={chartData} dataKey="visitors" nameKey="browser" />
+            <Pie
+              data={chartData}
+              dataKey="visitors"
+              nameKey="browser"
+              stroke="0"
+            />
           </PieChart>
         </ChartContainer>
       </CardContent>

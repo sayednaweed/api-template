@@ -1,5 +1,5 @@
 import { TrendingUp } from "lucide-react";
-import { Pie, PieChart } from "recharts";
+import { PolarGrid, RadialBar, RadialBarChart } from "recharts";
 
 import {
   Card,
@@ -49,11 +49,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function PieChartOne() {
+export default function RadialChartThree() {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart One</CardTitle>
+        <CardTitle>Radial Chart Three</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
@@ -61,13 +61,14 @@ export default function PieChartOne() {
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"
         >
-          <PieChart>
+          <RadialBarChart data={chartData} innerRadius={30} outerRadius={100}>
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent hideLabel nameKey="browser" />}
             />
-            <Pie data={chartData} dataKey="visitors" nameKey="browser" />
-          </PieChart>
+            <PolarGrid gridType="circle" />
+            <RadialBar dataKey="visitors" />
+          </RadialBarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
