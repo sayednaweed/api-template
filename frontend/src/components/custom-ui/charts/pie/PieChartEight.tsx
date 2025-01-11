@@ -1,5 +1,6 @@
 import { TrendingUp } from "lucide-react";
-import { Pie, PieChart } from "recharts";
+import { Label, Pie, PieChart, Sector } from "recharts";
+import { PieSectorDataItem } from "recharts/types/polar/Pie";
 
 import {
   Card,
@@ -49,11 +50,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export default function PieChartOne() {
+export default function PieChartEight() {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart One</CardTitle>
+        <CardTitle>Pie Chart Eight</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
@@ -66,7 +67,20 @@ export default function PieChartOne() {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Pie data={chartData} dataKey="visitors" nameKey="browser" />
+            <Pie
+              data={chartData}
+              dataKey="visitors"
+              nameKey="browser"
+              innerRadius={60}
+              strokeWidth={5}
+              activeIndex={0}
+              activeShape={({
+                outerRadius = 0,
+                ...props
+              }: PieSectorDataItem) => (
+                <Sector {...props} outerRadius={outerRadius + 10} />
+              )}
+            />
           </PieChart>
         </ChartContainer>
       </CardContent>
