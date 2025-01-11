@@ -45,7 +45,7 @@ class ProfileController extends Controller
                     'message' => __('app_translation.email_exist'),
                 ], 400, [], JSON_UNESCAPED_UNICODE);
             }
-            $authUser->full_name = $request->name;
+            $authUser->full_name = $request->full_name;
             $authUser->username = $request->username;
             $authUser->save();
             return response()->json([

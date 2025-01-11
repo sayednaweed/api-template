@@ -69,7 +69,7 @@ export default function AddUser(props: AddUserProps) {
     setError: Dispatch<SetStateAction<Map<string, string>>>
   ) => {
     let formData = new FormData();
-    formData.append("fullName", userData.name);
+    formData.append("full_name", userData.full_name);
     formData.append("username", userData.username);
     formData.append("email", userData.email);
     formData.append("password", userData.password);
@@ -150,7 +150,7 @@ export default function AddUser(props: AddUserProps) {
           {
             component: <AddUserInformation />,
             validationRules: [
-              { name: "name", rules: ["required", "max:45", "min:3"] },
+              { name: "full_name", rules: ["required", "max:45", "min:3"] },
               { name: "username", rules: ["required", "max:45", "min:3"] },
               { name: "email", rules: ["required"] },
               { name: "destination", rules: ["required"] },

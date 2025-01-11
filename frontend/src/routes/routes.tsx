@@ -32,9 +32,6 @@ export const getSuperRouter = (user: User) => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Unauthorized Route */}
-        <Route path="/unauthorized" element={<Unauthorized />} />
-
         {/* Site Routes */}
         <Route
           path="/"
@@ -92,7 +89,7 @@ export const getSuperRouter = (user: User) => {
             element={
               <ProtectedRoute
                 element={<SuperReportsPage />}
-                routeName="ngo-reports"
+                routeName="reports"
                 permissions={permissions}
               />
             }
@@ -131,7 +128,7 @@ export const getSuperRouter = (user: User) => {
         </Route>
 
         {/* Catch-all Route for Errors */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<Unauthorized />} />
       </Routes>
     </BrowserRouter>
   );
@@ -141,9 +138,6 @@ export const getAdminRouter = (user: User) => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Unauthorized Route */}
-        <Route path="/unauthorized" element={<Unauthorized />} />
-
         {/* Site Routes */}
         <Route
           path="/"
@@ -220,12 +214,11 @@ export const getAdminRouter = (user: User) => {
         </Route>
 
         {/* Catch-all Route for Errors */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<Unauthorized />} />
       </Routes>
     </BrowserRouter>
   );
 };
-
 export const getUserRouter = (user: User) => {
   const permissions: Map<string, UserPermission> = user.permissions;
   return (
@@ -391,7 +384,7 @@ export const getGuestRouter = () => {
           {site}
         </Route>
         {/* Catch-all Route for Errors */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<Unauthorized />} />
       </Routes>
     </BrowserRouter>
   );

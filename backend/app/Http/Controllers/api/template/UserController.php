@@ -48,11 +48,11 @@ class UserController extends Controller
         if ($startDate || $endDate) {
             // Apply date range filtering
             if ($startDate && $endDate) {
-                $query->whereBetween('createdAt', [$startDate, $endDate]);
+                $query->whereBetween('created_at', [$startDate, $endDate]);
             } elseif ($startDate) {
-                $query->where('createdAt', '>=', $startDate);
+                $query->where('created_at', '>=', $startDate);
             } elseif ($endDate) {
-                $query->where('createdAt', '<=', $endDate);
+                $query->where('created_at', '<=', $endDate);
             }
         }
 
@@ -131,12 +131,12 @@ class UserController extends Controller
             return response()->json([
                 "user" => [
                     "id" => $foundUser->id,
-                    "fullName" => $foundUser->fullName,
+                    "full_name" => $foundUser->full_name,
                     "username" => $foundUser->username,
                     'email' => $foundUser->email ? $foundUser->email->value : null,
                     "profile" => $foundUser->profile,
                     "status" => $foundUser->status,
-                    "grantPermission" => $foundUser->grant_permission,
+                    "grant" => $foundUser->grant_permission,
                     "role" => $foundUser->role,
                     'contact' => $foundUser->contact ? $foundUser->contact->value : null,
                     "destination" => [
@@ -147,7 +147,7 @@ class UserController extends Controller
                         'id' => $foundUser->job_id,
                         'name' => $this->getTranslationWithNameColumn($foundUser->job, ModelJob::class),
                     ],
-                    "createdAt" => $foundUser->created_at,
+                    "created_at" => $foundUser->created_at,
                 ],
                 "permission" => $concateArr
             ], 200, [], JSON_UNESCAPED_UNICODE);
@@ -207,7 +207,7 @@ class UserController extends Controller
         }
         // 3. Create User
         $newUser = User::create([
-            "full_name" => $request->fullName,
+            "full_name" => $request->full_name,
             "username" => $request->username,
             "email_id" => $email->id,
             "password" => Hash::make($request->password),
@@ -288,7 +288,7 @@ class UserController extends Controller
             }
 
             // 4. Update User other attributes
-            $user->full_name = $request->fullName;
+            $user->full_name = $request->full_name;
             $user->username = $request->username;
             $user->role_id = $request->role;
             $user->job_id = $request->job;

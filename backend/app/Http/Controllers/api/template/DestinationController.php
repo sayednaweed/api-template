@@ -22,7 +22,7 @@ class DestinationController extends Controller
             $tr = [];
             if ($locale === LanguageEnum::default->value)
                 $tr = Destination::with(['type']) // Eager load relationships
-                    ->select("name", 'id', 'created_at as createdAt', 'color', 'destination_type_id')->orderBy('id', 'desc')->get();
+                    ->select("name", 'id', 'created_at', 'color', 'destination_type_id')->orderBy('id', 'desc')->get();
             else {
                 $tr = $this->translations($locale, null);
             }
@@ -41,7 +41,7 @@ class DestinationController extends Controller
             $tr = [];
             if ($locale === LanguageEnum::default->value)
                 $tr = Destination::with(['type']) // Eager load relationships
-                    ->select("name", 'id', 'created_at as createdAt', 'color', 'destination_type_id')
+                    ->select("name", 'id', 'created_at', 'color', 'destination_type_id')
                     ->where('destination_type_id', '=', DestinationTypeEnum::directorate->value)
                     ->orderBy('id', 'desc')
                     ->get();
@@ -63,7 +63,7 @@ class DestinationController extends Controller
             $tr = [];
             if ($locale === LanguageEnum::default->value)
                 $tr = Destination::with(['type']) // Eager load relationships
-                    ->select("name", 'id', 'created_at as createdAt', 'color', 'destination_type_id')
+                    ->select("name", 'id', 'created_at', 'color', 'destination_type_id')
                     ->where('destination_type_id', '=', DestinationTypeEnum::muqam->value)
                     ->orderBy('id', 'desc')
                     ->get();
@@ -99,7 +99,7 @@ class DestinationController extends Controller
                     "type" => [
                         "id" => $type->id,
                         "name" => $this->getTranslationWithNameColumn($type, DestinationType::class),
-                        "createdAt" => $type->created_at,
+                        "created_at" => $type->created_at,
                     ],
                 ];
                 $translations = Translate::where("translable_id", "=", $id)
@@ -154,9 +154,9 @@ class DestinationController extends Controller
                             "type" => [
                                 "id" => $destinationType->id,
                                 "name" => $destinationType->name,
-                                "createdAt" => $destinationType->created_at,
+                                "created_at" => $destinationType->created_at,
                             ],
-                            "createdAt" => $destination->created_at
+                            "created_at" => $destination->created_at
                         ]
                     ], 200, [], JSON_UNESCAPED_UNICODE);
                 } else if ($locale === LanguageEnum::pashto->value) {
@@ -169,9 +169,9 @@ class DestinationController extends Controller
                             "type" => [
                                 "id" => $destinationType->id,
                                 "name" => $this->getTranslationWithNameColumn($destinationType, DestinationType::class),
-                                "createdAt" => $destinationType->created_at,
+                                "created_at" => $destinationType->created_at,
                             ],
-                            "createdAt" => $destination->created_at
+                            "created_at" => $destination->created_at
                         ]
                     ], 200, [], JSON_UNESCAPED_UNICODE);
                 } else {
@@ -184,9 +184,9 @@ class DestinationController extends Controller
                             "type" => [
                                 "id" => $destinationType->id,
                                 "name" => $this->getTranslationWithNameColumn($destinationType, DestinationType::class),
-                                "createdAt" => $destinationType->created_at,
+                                "created_at" => $destinationType->created_at,
                             ],
-                            "createdAt" => $destination->created_at
+                            "created_at" => $destination->created_at
                         ]
                     ], 200, [], JSON_UNESCAPED_UNICODE);
                 }
@@ -246,11 +246,11 @@ class DestinationController extends Controller
                         "id" => $destination->id,
                         "color" => $destination->color,
                         "name" => $destination->name,
-                        "createdAt" => $destination->created_at,
+                        "created_at" => $destination->created_at,
                         "type" => [
                             "id" => $type->id,
                             "name" => $this->getTranslationWithNameColumn($type, DestinationType::class),
-                            "createdAt" => $type->created_at
+                            "created_at" => $type->created_at
                         ]
                     ],
                 ], 200, [], JSON_UNESCAPED_UNICODE);
@@ -324,7 +324,7 @@ class DestinationController extends Controller
                 'id' => $destination->id,
                 'name' => $destinationTranslation ? $destinationTranslation->value : null,  // Translated name
                 'color' => $destination->color,
-                'createdAt' => $destination->created_at,
+                'created_at' => $destination->created_at,
             ];
 
             // Get the translated name for the destination type
@@ -332,7 +332,7 @@ class DestinationController extends Controller
             $destinationData['type'] = [
                 'id' => $destination->destination_type_id,
                 'name' => $destinationTypeTranslation ? $destinationTypeTranslation->value : null,  // Translated name
-                'createdAt' => $destinationTypeTranslation ? $destinationTypeTranslation->created_at : null
+                'created_at' => $destinationTypeTranslation ? $destinationTypeTranslation->created_at : null
             ];
 
             // Return transformed destination data

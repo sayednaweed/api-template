@@ -70,6 +70,30 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserPermission::class, 'user_id', 'id');
     }
+
+    public function destinationThrough()
+    {
+        return $this->hasOneThrough(
+            Translate::class,
+            Destination::class,
+            'id',
+            'translable_id',
+            'destination_id',
+            'id'
+        );
+    }
+
+    public function jobThrough()
+    {
+        return $this->hasOneThrough(
+            Translate::class,
+            ModelJob::class,
+            'id',
+            'translable_id',
+            'job_id',
+            'id'
+        );
+    }
     // Define the relationship to the Permission model
     public function permissions()
     {
@@ -79,17 +103,5 @@ class User extends Authenticatable
     public function hasPermission($permission)
     {
         return $this->permissions()->where('permission', $permission)->exists();
-        // Optionally cache the permissions if needed
-        // $permissions = $this->getCachedPermissions();
-
-        // return in_array($permission, $permissions);
     }
-
-    // private function getCachedPermissions()
-    // {
-    //     // Use cache to store user permissions
-    //     return Cache::remember("user_permissions_{$this->id}", 60, function () {
-    //         return $this->permissions()->pluck('permission')->toArray();
-    //     });
-    // }
 }

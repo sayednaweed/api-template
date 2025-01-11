@@ -11,9 +11,9 @@ export interface LanguageType {
   name: string;
 }
 export const supportedLangauges: LanguageType[] = [
-  { name: "English", code: "en" },
-  { name: "Farsi", code: "fa" },
-  { name: "Pashto", code: "ps" },
+  { name: "english", code: "en" },
+  { name: "farsi", code: "fa" },
+  { name: "pashto", code: "ps" },
 ];
 
 // the translations

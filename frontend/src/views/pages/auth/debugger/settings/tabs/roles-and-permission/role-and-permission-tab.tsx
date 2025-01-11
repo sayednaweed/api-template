@@ -244,7 +244,7 @@ export default function RoleAndPermissionTab() {
                 </TableCell>
                 <TableCell>{destination?.type?.name}</TableCell>
                 <TableCell>
-                  {toLocaleDate(new Date(destination.createdAt), state)}
+                  {toLocaleDate(new Date(destination.created_at), state)}
                 </TableCell>
               </TableRowIcon>
             ))

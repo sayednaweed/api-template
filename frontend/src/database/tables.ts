@@ -23,27 +23,27 @@ export type SelectUserPermission = UserPermission & {
 export type Contact = {
   id: string;
   value: string;
-  createdAt: string;
+  created_at: string;
 };
 export type Email = {
   id: string;
   value: string;
-  createdAt: string;
+  created_at: string;
 };
 export type User = {
   id: string;
-  fullName: string;
+  full_name: string;
   username: string;
   email: string;
   status: boolean;
-  grantPermission: boolean;
+  grant: boolean;
   profile: any;
   role: Role;
   contact: string;
   job: string;
   destination: string;
   permissions: Map<string, UserPermission>;
-  createdAt: string;
+  created_at: string;
 };
 
 export type Notifications = {
@@ -63,14 +63,14 @@ export type Job = {
 export type DestinationType = {
   id: string;
   name: string;
-  createdAt: string;
+  created_at: string;
 };
 export type Destination = {
   id: string;
   name: string;
   color: string;
   type: DestinationType;
-  createdAt: string;
+  created_at: string;
 };
 
 export type Country = {

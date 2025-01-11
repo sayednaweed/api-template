@@ -18,7 +18,7 @@ return new class extends Migration
                 u.username,
                 u.profile,
                 u.status,
-                u.created_at AS createdAt,
+                u.created_at,
                 e.value AS email,
                 c.value AS contact,
                 td.destination,
@@ -27,14 +27,14 @@ return new class extends Migration
             LEFT JOIN contacts c ON u.contact_id = c.id
             LEFT JOIN emails e ON u.email_id = e.id
             LEFT JOIN (
-                SELECT translable_id, value AS destination
+                SELECT translable_id, MAX(value) AS destination
                 FROM translates
                 WHERE translable_type = 'App\\Models\\Destination' 
                 AND language_name = 'ps'
                 GROUP BY translable_id
             ) td ON u.destination_id = td.translable_id
             LEFT JOIN (
-                SELECT translable_id, value AS job
+                SELECT translable_id, MAX(value) AS job
                 FROM translates
                 WHERE translable_type = 'App\\Models\\ModelJob' 
                 AND language_name = 'ps'

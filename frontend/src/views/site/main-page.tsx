@@ -27,10 +27,10 @@ export default function MainPage() {
           </Link>
         </header>
         <div className="flex items-center justify-end  gap-3 ">
-          <h1 className="font-bold text-xl text-white">{t("IRD")}</h1>
+          <h1 className="font-bold text-xl text-white">{t("app_name")}</h1>
           <img
-            className="h-10"
-            src="../src/views/site/img/logo.png"
+            className="h-16"
+            src="http://127.0.0.1:8000/images/app-logo.png"
             alt="logo"
           />
         </div>

@@ -167,5 +167,13 @@
   "just_now": "Just now",
   "count": "Count",
   "is_registered_before": "is registered before in system",
-  "admin": "Admin"
+  "admin": "Admin",
+  "full_name": "full_name",
+  "debugger": "Debugger",
+  "pashto": "Pashto",
+  "application": "application",
+  "home": "Home",
+  "about": "About",
+  "powered_by": "Powered By",
+  "moph_address": "Sehat-e-Ama Square, Wazir Akbar khan Road, Kabul, Afghanistan"
 }

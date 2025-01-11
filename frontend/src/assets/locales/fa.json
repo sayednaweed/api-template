@@ -143,7 +143,7 @@
   "translate_ps": "ترجمه پشتو را وارد کنید",
   "ps": "PS",
   "add_job": "افزودن وظیفه",
-  "id": "آی دی",
+  "id": "شناسه",
   "select_a_type": "یک نوع را انتخاب کنید",
   "color": "رنگ",
   "gradient": "گرادیان",
@@ -167,5 +167,10 @@
   "just_now": "همین الان",
   "count": "مجموعه",
   "is_registered_before": "قبلا در سیستم ثبت شده است",
-  "admin": "ادمین"
+  "admin": "ادمین",
+  "full_name": "نام کامل",
+  "debugger": "دیبگر",
+  "pashto": "پشتو",
+  "application": "application",
+  "home": "صفحه اصلی"
 }

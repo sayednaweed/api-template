@@ -27,17 +27,17 @@ class AuthController extends Controller
         return response()->json(array_merge([
             "user" => [
                 "id" => $user->id,
-                "fullName" => $user->full_name,
+                "full_name" => $user->full_name,
                 "username" => $user->username,
                 'email' => $user->email ? $user->email->value : "",
                 "profile" => $user->profile,
                 "status" => $user->status,
-                "grantPermission" => $user->grant_permission,
+                "grant" => $user->grant_permission,
                 "role" => ["role" => $user->role->id, "name" => $user->role->name],
                 'contact' => $user->contact ? $user->contact->value : "",
                 "destination" => $user->destination ? $this->getTranslationWithNameColumn($user->destination, Destination::class) : "",
                 "job" => $user->job ? $this->getTranslationWithNameColumn($user->job, ModelJob::class) : "",
-                "createdAt" => $user->created_at,
+                "created_at" => $user->created_at,
             ]
         ], [
             "permissions" => $userPermissions["permissions"],
@@ -74,17 +74,17 @@ class AuthController extends Controller
                 array_merge([
                     "user" => [
                         "id" => $user->id,
-                        "fullName" => $user->full_name,
+                        "full_name" => $user->full_name,
                         "username" => $user->username,
                         'email' => $user->email ? $user->email->value : "",
                         "profile" => $user->profile,
                         "status" => $user->status,
-                        "grantPermission" => $user->grant_permission,
+                        "grant" => $user->grant_permission,
                         "role" => ["role" => $user->role->id, "name" => $user->role->name],
                         'contact' => $user->contact ? $user->contact->value : "",
                         "destination" => $user->destination ? $this->getTranslationWithNameColumn($user->destination, Destination::class) : "",
                         "job" => $user->job ? $this->getTranslationWithNameColumn($user->job, ModelJob::class) : "",
-                        "createdAt" => $user->created_at,
+                        "created_at" => $user->created_at,
                     ]
                 ], [
                     "token" => $loggedIn['tokens']['access_token'],

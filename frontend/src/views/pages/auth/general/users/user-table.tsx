@@ -51,7 +51,7 @@ export function UserTable() {
   const sort = searchParams.get("sort");
   const order = searchParams.get("order");
   const [filters, setFilters] = useState<UserFilter>({
-    sort: sort == null ? "createdAt" : (sort as UserSort),
+    sort: sort == null ? "created_at" : (sort as UserSort),
     order: order == null ? "asc" : (order as Order),
     search: {
       column: search == null ? "username" : (search as UserSearch),
@@ -447,15 +447,15 @@ export function UserTable() {
                 </TableCell>
                 <TableCell
                   dir="ltr"
-                  className="rtl:text-md-rtl truncate rtl:text-end px-0 py-0"
+                  className="truncate rtl:text-sm-rtl rtl:text-end"
                 >
                   {item.email}
                 </TableCell>
-                <TableCell dir="ltr" className="rtl:text-end">
+                <TableCell dir="ltr" className="rtl:text-end rtl:text-sm-rtl">
                   {item?.contact == "null" ? "" : item?.contact}
                 </TableCell>
                 <TableCell>
-                  {toLocaleDate(new Date(item.createdAt), state)}
+                  {toLocaleDate(new Date(item.created_at), state)}
                 </TableCell>
                 <TableCell>
                   {item?.status ? (

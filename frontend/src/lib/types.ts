@@ -8,7 +8,7 @@ export interface IMenuItem {
 export interface UserInformation {
   profile: any;
   imagePreviewUrl: any;
-  name: string;
+  full_name: string;
   username: string;
   password: string;
   email: string;
@@ -32,12 +32,12 @@ export interface UserInformation {
   };
   permission: Map<string, SelectUserPermission>;
   allSelected: boolean;
-  createdAt: string;
+  created_at: string;
 }
 export interface UserPassword {
-  oldPassword: string;
-  newPassword: string;
-  confirmPassword: string;
+  old_password: string;
+  new_password: string;
+  confirm_password: string;
 }
 export interface UserPaginationData {
   data: User[];
@@ -53,7 +53,7 @@ export interface UserData {
 }
 export type Order = "desc" | "asc";
 export type UserSort =
-  | "createdAt"
+  | "created_at"
   | "username"
   | "destination"
   | "status"

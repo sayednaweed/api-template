@@ -24,18 +24,18 @@ type Action =
 type Dispatch = React.Dispatch<Action>;
 const initUser: User = {
   id: "",
-  fullName: "",
+  full_name: "",
   username: "",
   email: "",
   status: false,
-  grantPermission: false,
+  grant: false,
   profile: "",
   role: { role: 2, name: "admin" },
   job: "",
   contact: "",
   destination: "",
   permissions: new Map(),
-  createdAt: "",
+  created_at: "",
 };
 const initialState: AuthState = {
   user: initUser,

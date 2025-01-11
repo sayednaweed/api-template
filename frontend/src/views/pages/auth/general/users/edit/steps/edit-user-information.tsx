@@ -66,7 +66,7 @@ export default function EditUserInformation(props: EditUserInformationProps) {
     const passed = await validate(
       [
         {
-          name: "fullName",
+          name: "full_name",
           rules: ["required", "max:45", "min:3"],
         },
         {
@@ -94,7 +94,7 @@ export default function EditUserInformation(props: EditUserInformationProps) {
           rules: ["required"],
         },
         {
-          name: "grantPermission",
+          name: "grant",
           rules: ["required"],
         },
       ],
@@ -108,7 +108,7 @@ export default function EditUserInformation(props: EditUserInformationProps) {
     // 2. Store
     const formData = new FormData();
     formData.append("id", id);
-    formData.append("fullName", tempUserData.name);
+    formData.append("full_name", tempUserData.full_name);
     formData.append("username", tempUserData.username);
     formData.append("contact", tempUserData.contact);
     formData.append("email", tempUserData.email);
@@ -153,21 +153,21 @@ export default function EditUserInformation(props: EditUserInformationProps) {
       </CardHeader>
       <CardContent>
         {failed ? (
-          <h1>{t("u_are_not_authzed!")}</h1>
+          <h1 className="rtl:text-2xl-rtl">{t("u_are_not_authzed!")}</h1>
         ) : tempUserData === undefined ? (
           <NastranSpinner />
         ) : (
           <div className="grid gap-4 w-full sm:w-[70%] md:w-1/2">
             <CustomInput
               required={true}
-              lable={t("name")}
+              lable={t("full_name")}
               requiredHint={`* ${t("required")}`}
               size_="sm"
-              name="name"
-              defaultValue={tempUserData["name"]}
+              name="full_name"
+              defaultValue={tempUserData.full_name}
               placeholder={t("enter_your_name")}
               type="text"
-              errorMessage={error.get("name")}
+              errorMessage={error.get("full_name")}
               onBlur={handleChange}
               startContent={
                 <UserRound className="text-tertiary size-[18px] pointer-events-none" />
@@ -193,7 +193,7 @@ export default function EditUserInformation(props: EditUserInformationProps) {
               name="email"
               required={true}
               lable={t("email")}
-              requiredHint={`* ${t("Required")}`}
+              requiredHint={`* ${t("required")}`}
               defaultValue={tempUserData["email"]}
               placeholder={t("enter_your_email")}
               type="email"
@@ -263,13 +263,14 @@ export default function EditUserInformation(props: EditUserInformationProps) {
               errorMessage={error.get("role")}
               apiUrl={"roles"}
               mode="single"
+              translate={true}
             />
             <FakeCombobox
               icon={
                 <CalendarDays className="size-[16px] text-tertiary absolute top-1/2 transform -translate-y-1/2 ltr:right-4 rtl:left-4" />
               }
               title={t("join_date")}
-              selected={toLocaleDate(new Date(tempUserData.createdAt), state)}
+              selected={toLocaleDate(new Date(tempUserData.created_at), state)}
             />
             <CustomCheckbox
               checked={tempUserData["status"]}
@@ -302,7 +303,7 @@ export default function EditUserInformation(props: EditUserInformationProps) {
             onClick={async () => await refreshPage()}
             className="bg-red-500 hover:bg-red-500/70"
           >
-            {t("Failed Retry")}
+            {t("failed_retry")}
             <RefreshCcw className="ltr:ml-2 rtl:mr-2" />
           </PrimaryButton>
         ) : (
@@ -315,7 +316,7 @@ export default function EditUserInformation(props: EditUserInformationProps) {
               }}
               className={`shadow-lg`}
             >
-              <ButtonSpinner loading={loading}>{t("Save")}</ButtonSpinner>
+              <ButtonSpinner loading={loading}>{t("save")}</ButtonSpinner>
             </PrimaryButton>
           )
         )}

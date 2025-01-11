@@ -167,5 +167,9 @@
   "just_now": "همدا اوس",
   "count": "ټولګه",
   "is_registered_before": "په سیسټم کې مخکې ثبت شوی",
-  "admin": "اډمین"
+  "admin": "اډمین",
+  "full_name": "بشپړ نوم",
+  "debugger": "ډیبګر",
+  "pashto": "پشتو",
+  "home": "کور پاڼه"
 }

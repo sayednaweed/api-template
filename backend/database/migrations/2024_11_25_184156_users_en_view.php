@@ -19,7 +19,7 @@ return new class extends Migration
             u.username,
             u.profile,
             u.status,
-            u.created_at AS createdAt,
+            u.created_at,
             e.value as email,
 			c.value as contact,
             d.name as destination,

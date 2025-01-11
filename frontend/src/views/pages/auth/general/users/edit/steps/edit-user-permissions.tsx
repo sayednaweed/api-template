@@ -94,14 +94,14 @@ export default function EditUserPermissions(props: EditUserPermissionsProps) {
         if (response.status == 200) {
           toast({
             toastType: "SUCCESS",
-            title: t("Success"),
+            title: t("success"),
             description: t(response.data.message),
           });
         }
       } catch (error: any) {
         toast({
           toastType: "ERROR",
-          title: t("Error"),
+          title: t("error"),
           description: t(error.response.data.message),
         });
         console.log(error);
@@ -120,21 +120,21 @@ export default function EditUserPermissions(props: EditUserPermissionsProps) {
     <Card>
       <CardHeader className="space-y-0">
         <CardTitle className="rtl:text-3xl-rtl ltr:text-2xl-ltr">
-          {t("Update account permissions")}
+          {t("update_account_permissions")}
         </CardTitle>
         <CardDescription className="rtl:text-xl-rtl ltr:text-lg-ltr">
-          {t("Update_Permissions_Description")}
+          {t("update_permis_descrip")}
         </CardDescription>
       </CardHeader>
       <CardContent>
         {failed ? (
-          <h1>{t("You are not authorized!")}</h1>
+          <h1>{t("u_are_not_authzed!")}</h1>
         ) : userData?.permission == undefined ? (
           <NastranSpinner />
         ) : (
           <div className="relative overflow-x-auto max-h-[500px]">
             <table className="w-full text-left rtl:text-right">
-              <thead className="rtl:text-3xl-rtl ltr:text-xl-ltr text-primary/80 uppercase bg-secondary">
+              <thead className="rtl:text-2xl-rtl ltr:text-xl-ltr text-primary/80 uppercase bg-secondary">
                 <tr>
                   <th scope="col" className="p-4">
                     <CustomCheckbox
@@ -146,19 +146,19 @@ export default function EditUserPermissions(props: EditUserPermissionsProps) {
                     />
                   </th>
                   <th scope="col" className="text-start py-3">
-                    {t("Section")}
+                    {t("section")}
                   </th>
                   <th scope="col" className="text-start py-3">
-                    {t("Add")}
+                    {t("add")}
                   </th>
                   <th scope="col" className="text-start py-3">
-                    {t("View")}
+                    {t("view")}
                   </th>
                   <th scope="col" className="text-start py-3">
-                    {t("Edit")}
+                    {t("edit")}
                   </th>
                   <th scope="col" className="text-start py-3">
-                    {t("Delete")}
+                    {t("delete")}
                   </th>
                 </tr>
               </thead>
@@ -190,7 +190,7 @@ export default function EditUserPermissions(props: EditUserPermissionsProps) {
                           </td>
                           <th
                             scope="row"
-                            className="text-start py-4 font-medium text-primary whitespace-nowrap"
+                            className="text-start py-4 rtl:text-xl-rtl font-medium text-primary whitespace-nowrap"
                           >
                             {t(key)}
                           </th>
@@ -317,7 +317,7 @@ export default function EditUserPermissions(props: EditUserPermissionsProps) {
             onClick={async () => await refreshPage()}
             className="bg-red-500 hover:bg-red-500/70"
           >
-            {t("Failed Retry")}
+            {t("failed_retry")}
             <RefreshCcw className="ltr:ml-2 rtl:mr-2" />
           </PrimaryButton>
         ) : (
@@ -325,13 +325,13 @@ export default function EditUserPermissions(props: EditUserPermissionsProps) {
           hasEdit && (
             <PrimaryButton
               onClick={async () => {
-                if (user.grantPermission) {
+                if (user.grant) {
                   await saveData();
                 }
               }}
-              className={`shadow-lg`}
+              className={`shadow-lg mt-8`}
             >
-              <ButtonSpinner loading={loading}>{t("Save")}</ButtonSpinner>
+              <ButtonSpinner loading={loading}>{t("save")}</ButtonSpinner>
             </PrimaryButton>
           )
         )}

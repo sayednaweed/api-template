@@ -35,9 +35,9 @@ export function EditUserPassword(props: EditUserPasswordProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   const [passwordData, setPasswordData] = useState<UserPassword>({
-    newPassword: "",
-    confirmPassword: "",
-    oldPassword: "",
+    new_password: "",
+    confirm_password: "",
+    old_password: "",
   });
   const [error, setError] = useState<Map<string, string>>(new Map());
 
@@ -50,10 +50,10 @@ export function EditUserPassword(props: EditUserPasswordProps) {
       setLoading(true);
       const formData = new FormData();
       formData.append("id", id);
-      formData.append("newPassword", passwordData.newPassword);
+      formData.append("new_password", passwordData.new_password);
       if (user.role.role != RoleEnum.super)
-        formData.append("oldPassword", passwordData.oldPassword);
-      formData.append("confirmPassword", passwordData.confirmPassword);
+        formData.append("old_password", passwordData.old_password);
+      formData.append("confirm_password", passwordData.confirm_password);
       try {
         const response = await axiosClient.post(
           "user/change-password",
@@ -67,7 +67,7 @@ export function EditUserPassword(props: EditUserPasswordProps) {
         if (response.status == 200) {
           toast({
             toastType: "SUCCESS",
-            title: t("Success"),
+            title: t("success"),
             description: t(response.data.message),
           });
           // If user changed his password he must login again
@@ -76,7 +76,7 @@ export function EditUserPassword(props: EditUserPasswordProps) {
       } catch (error: any) {
         toast({
           toastType: "ERROR",
-          title: t("Error"),
+          title: t("error"),
           description: error.response.data.message,
         });
         setServerError(error.response.data.errors, setError);
@@ -96,15 +96,15 @@ export function EditUserPassword(props: EditUserPasswordProps) {
     <Card>
       <CardHeader className="space-y-0">
         <CardTitle className="rtl:text-3xl-rtl ltr:text-2xl-ltr">
-          {t("Update account password")}
+          {t("update_account_password")}
         </CardTitle>
         <CardDescription className="rtl:text-xl-rtl ltr:text-lg-ltr">
-          {t("Update_Password_Description")}
+          {t("update_pass_descrip")}
         </CardDescription>
       </CardHeader>
       <CardContent>
         {failed ? (
-          <h1>{t("You are not authorized!")}</h1>
+          <h1>{t("u_are_not_authzed!")}</h1>
         ) : !userData ? (
           <NastranSpinner />
         ) : (
@@ -112,14 +112,14 @@ export function EditUserPassword(props: EditUserPasswordProps) {
             {user.role.role != RoleEnum.super && (
               <CustomInput
                 size_="sm"
-                name="oldPassword"
-                lable={t("oldPassword")}
+                name="old_password"
+                lable={t("old_password")}
                 required={true}
-                requiredHint={`* ${t("Required")}`}
-                defaultValue={passwordData["oldPassword"]}
+                requiredHint={`* ${t("required")}`}
+                defaultValue={passwordData["old_password"]}
                 onChange={handleChange}
-                placeholder={t("Enter password")}
-                errorMessage={error.get("oldPassword")}
+                placeholder={t("enter_password")}
+                errorMessage={error.get("old_password")}
                 startContent={
                   <button
                     className="focus:outline-none"
@@ -138,26 +138,26 @@ export function EditUserPassword(props: EditUserPasswordProps) {
             )}
             <CustomInput
               size_="sm"
-              name="newPassword"
-              lable={t("newPassword")}
+              name="new_password"
+              lable={t("new_password")}
               required={true}
-              requiredHint={`* ${t("Required")}`}
-              defaultValue={passwordData["newPassword"]}
+              requiredHint={`* ${t("required")}`}
+              defaultValue={passwordData["new_password"]}
               onChange={handleChange}
-              placeholder={t("newPassword")}
-              errorMessage={error.get("newPassword")}
+              placeholder={t("enter_password")}
+              errorMessage={error.get("new_password")}
               type={"password"}
             />
             <CustomInput
               size_="sm"
-              name="confirmPassword"
-              lable={t("confirmPassword")}
+              name="confirm_password"
+              lable={t("confirm_password")}
               required={true}
-              requiredHint={`* ${t("Required")}`}
-              defaultValue={passwordData["confirmPassword"]}
+              requiredHint={`* ${t("required")}`}
+              defaultValue={passwordData["confirm_password"]}
               onChange={handleChange}
-              placeholder={t("confirmPassword")}
-              errorMessage={error.get("confirmPassword")}
+              placeholder={t("enter_password")}
+              errorMessage={error.get("confirm_password")}
               type={"password"}
             />
           </div>
@@ -169,7 +169,7 @@ export function EditUserPassword(props: EditUserPasswordProps) {
             onClick={async () => await refreshPage()}
             className="bg-red-500 hover:bg-red-500/70"
           >
-            {t("Failed Retry")}
+            {t("failed_retry")}
             <RefreshCcw className="ltr:ml-2 rtl:mr-2" />
           </PrimaryButton>
         ) : (
@@ -181,7 +181,7 @@ export function EditUserPassword(props: EditUserPasswordProps) {
               }}
               className={`shadow-lg`}
             >
-              <ButtonSpinner loading={loading}>{t("Save")}</ButtonSpinner>
+              <ButtonSpinner loading={loading}>{t("save")}</ButtonSpinner>
             </PrimaryButton>
           )
         )}

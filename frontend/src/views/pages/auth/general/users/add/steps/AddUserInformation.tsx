@@ -16,14 +16,14 @@ export default function AddUserInformation() {
     <div className="flex flex-col mt-10 w-full sm:w-[86%] md:w-[60%] lg:w-[400px] gap-y-6 pb-12 mx-auto">
       <CustomInput
         required={true}
-        lable={t("name")}
+        lable={t("full_name")}
         requiredHint={`* ${t("required")}`}
         size_="sm"
-        name="name"
-        defaultValue={userData["name"]}
+        name="full_name"
+        defaultValue={userData["full_name"]}
         placeholder={t("enter_your_name")}
         type="text"
-        errorMessage={error.get("name")}
+        errorMessage={error.get("full_name")}
         onBlur={handleChange}
         startContent={
           <UserRound className="text-tertiary size-[18px] pointer-events-none" />

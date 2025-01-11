@@ -5,13 +5,20 @@ function FooterSection() {
 
   return (
     <>
-      <div className="relative flex flex-col justify-start bg-slate-700 text-white ltr:text-left rtl:text-right text-2xl-ltr h-60 w-full px-4  rtl:text-2xl-rtl ">
-        <div className="mt-20 flex flex-row">
-          <div>
-            <p>{t("add_moph")} </p>
-            <p>{t("email")}: info@moph.gov.af</p>
-            <p>{t("phone_number")}: +93(0) 20 230 1374</p>
-          </div>
+      <div className="flex flex-col justify-start bg-primary rtl:text-2xl-rtl ltr:text-md-ltr text-primary-foreground">
+        <div className="flex flex-col">
+          <h1>
+            {`${t("address")}: `}
+            <span className=" rtl:text-lg-rtl">{t("moph_address")}</span>
+          </h1>
+          <h1>
+            {`${t("email")}: `}
+            <span className=" rtl:text-lg-rtl">info@moph.gov.af</span>
+          </h1>
+          <h1>
+            {`${t("contact")}: `}
+            <span className=" rtl:text-lg-rtl">+93(0) 20 230 1374</span>
+          </h1>
         </div>
         <div className="flex items-center justify-end mt-10">
           <p>{t("powered_by")}</p>

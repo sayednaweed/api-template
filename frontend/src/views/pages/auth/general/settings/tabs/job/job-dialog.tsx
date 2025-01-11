@@ -26,9 +26,9 @@ export default function JobDialog(props: JobDialogProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(new Map<string, string>());
   const [userData, setUserData] = useState({
-    Farsi: "",
-    English: "",
-    Pashto: "",
+    farsi: "",
+    english: "",
+    pashto: "",
   });
   const { modelOnRequestHide } = useModelOnRequestHide();
   const { t } = useTranslation();
@@ -38,9 +38,9 @@ export default function JobDialog(props: JobDialogProps) {
       const response = await axiosClient.get(`job/${job?.id}`);
       if (response.status === 200) {
         setUserData({
-          Farsi: response.data.job.fa,
-          English: response.data.job.en,
-          Pashto: response.data.job.ps,
+          farsi: response.data.job.fa,
+          english: response.data.job.en,
+          pashto: response.data.job.ps,
         });
       }
     } catch (error: any) {
@@ -62,15 +62,15 @@ export default function JobDialog(props: JobDialogProps) {
       const passed = await validate(
         [
           {
-            name: "English",
+            name: "english",
             rules: ["required"],
           },
           {
-            name: "Farsi",
+            name: "farsi",
             rules: ["required"],
           },
           {
-            name: "Pashto",
+            name: "pashto",
             rules: ["required"],
           },
         ],
@@ -80,9 +80,9 @@ export default function JobDialog(props: JobDialogProps) {
       if (!passed) return;
       // 2. Store
       let formData = new FormData();
-      formData.append("english", userData.English);
-      formData.append("farsi", userData.Farsi);
-      formData.append("pashto", userData.Pashto);
+      formData.append("english", userData.english);
+      formData.append("farsi", userData.farsi);
+      formData.append("pashto", userData.pashto);
       const response = await axiosClient.post("job/store", formData);
       if (response.status === 200) {
         toast({
@@ -107,15 +107,15 @@ export default function JobDialog(props: JobDialogProps) {
       const passed = await validate(
         [
           {
-            name: "English",
+            name: "english",
             rules: ["required"],
           },
           {
-            name: "Farsi",
+            name: "farsi",
             rules: ["required"],
           },
           {
-            name: "Pashto",
+            name: "pashto",
             rules: ["required"],
           },
         ],
@@ -126,9 +126,9 @@ export default function JobDialog(props: JobDialogProps) {
       // 2. update
       let formData = new FormData();
       if (job?.id) formData.append("id", job.id);
-      formData.append("english", userData.English);
-      formData.append("farsi", userData.Farsi);
-      formData.append("pashto", userData.Pashto);
+      formData.append("english", userData.english);
+      formData.append("farsi", userData.farsi);
+      formData.append("pashto", userData.pashto);
       const response = await axiosClient.post(`job/update`, formData);
       if (response.status === 200) {
         toast({
@@ -153,7 +153,7 @@ export default function JobDialog(props: JobDialogProps) {
     <Card className="w-fit min-w-[400px] self-center [backdrop-filter:blur(20px)] bg-white/70 dark:!bg-black/40">
       <CardHeader className="relative text-start">
         <CardTitle className="rtl:text-4xl-rtl ltr:text-3xl-ltr text-tertiary">
-          {job ? t("Edit") : t("Add")}
+          {job ? t("edit") : t("add")}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -162,12 +162,12 @@ export default function JobDialog(props: JobDialogProps) {
           dir="ltr"
           className="rtl:text-end"
           required={true}
-          requiredHint={`* ${t("Required")}`}
+          requiredHint={`* ${t("required")}`}
           placeholder={t("translate_en")}
-          defaultValue={userData.English}
+          defaultValue={userData.english}
           type="text"
-          name="English"
-          errorMessage={error.get("English")}
+          name="english"
+          errorMessage={error.get("english")}
           onChange={handleChange}
           startContentDark={true}
           startContent={
@@ -179,12 +179,12 @@ export default function JobDialog(props: JobDialogProps) {
         <CustomInput
           size_="sm"
           required={true}
-          requiredHint={`* ${t("Required")}`}
+          requiredHint={`* ${t("required")}`}
           placeholder={t("translate_fa")}
-          defaultValue={userData.Farsi}
+          defaultValue={userData.farsi}
           type="text"
-          name="Farsi"
-          errorMessage={error.get("Farsi")}
+          name="farsi"
+          errorMessage={error.get("farsi")}
           onChange={handleChange}
           startContentDark={true}
           startContent={
@@ -196,12 +196,12 @@ export default function JobDialog(props: JobDialogProps) {
         <CustomInput
           size_="sm"
           required={true}
-          requiredHint={`* ${t("Required")}`}
+          requiredHint={`* ${t("required")}`}
           placeholder={t("translate_ps")}
-          defaultValue={userData.Pashto}
+          defaultValue={userData.pashto}
           type="text"
-          name="Pashto"
-          errorMessage={error.get("Pashto")}
+          name="pashto"
+          errorMessage={error.get("pashto")}
           onChange={handleChange}
           startContentDark={true}
           startContent={
@@ -217,7 +217,7 @@ export default function JobDialog(props: JobDialogProps) {
           variant="outline"
           onClick={modelOnRequestHide}
         >
-          {t("Cancel")}
+          {t("cancel")}
         </Button>
         <PrimaryButton
           disabled={loading}
@@ -225,7 +225,7 @@ export default function JobDialog(props: JobDialogProps) {
           className={`${loading && "opacity-90"}`}
           type="submit"
         >
-          <ButtonSpinner loading={loading}>{t("Save")}</ButtonSpinner>
+          <ButtonSpinner loading={loading}>{t("save")}</ButtonSpinner>
         </PrimaryButton>
       </CardFooter>
     </Card>

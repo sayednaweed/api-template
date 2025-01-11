@@ -24,7 +24,7 @@ export default function SuperReportsPage() {
           <BreadcrumbSeparator className="rtl:rotate-180" />
           <BreadcrumbItem>
             <BreadcrumbPage className="text-tertiary">
-              {t("Projects Reports")}
+              {t("reports")}
             </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>

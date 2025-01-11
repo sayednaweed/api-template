@@ -53,7 +53,7 @@ export default function DestinationTab() {
     } catch (error: any) {
       toast({
         toastType: "ERROR",
-        title: "Error!",
+        title: t("error"),
         description: error.response.data.message,
       });
     } finally {
@@ -151,7 +151,7 @@ export default function DestinationTab() {
           isDismissable={false}
           button={
             <PrimaryButton className="text-primary-foreground">
-              {t("add reference")}
+              {t("add_reference")}
             </PrimaryButton>
           }
           showDialog={async () => true}
@@ -244,7 +244,7 @@ export default function DestinationTab() {
                 </TableCell>
                 <TableCell>{destination?.type?.name}</TableCell>
                 <TableCell>
-                  {toLocaleDate(new Date(destination.createdAt), state)}
+                  {toLocaleDate(new Date(destination.created_at), state)}
                 </TableCell>
               </TableRowIcon>
             ))

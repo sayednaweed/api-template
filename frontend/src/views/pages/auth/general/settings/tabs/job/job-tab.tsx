@@ -53,7 +53,7 @@ export default function JobTab() {
     } catch (error: any) {
       toast({
         toastType: "ERROR",
-        title: "Error!",
+        title: t("error"),
         description: error.response.data.message,
       });
     } finally {
@@ -144,7 +144,7 @@ export default function JobTab() {
           isDismissable={false}
           button={
             <PrimaryButton className="text-primary-foreground">
-              {t("add job")}
+              {t("add_job")}
             </PrimaryButton>
           }
           showDialog={async () => true}

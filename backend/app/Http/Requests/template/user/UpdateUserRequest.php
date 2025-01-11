@@ -23,7 +23,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             "id" => ['required'],
-            "fullName" => ['required', "string", "min:3", "max:45"],
+            "full_name" => ['required', "string", "min:3", "max:45"],
             "username" => ['required', "string", "min:3", "max:45"],
             "email" => ["required", "email"],
             "role" => ["required", "string"],

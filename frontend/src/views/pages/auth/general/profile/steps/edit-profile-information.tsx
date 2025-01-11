@@ -30,7 +30,7 @@ import FakeCombobox from "@/components/custom-ui/combobox/FakeCombobox";
 
 interface ProfileInformation {
   id: string;
-  name: string;
+  full_name: string;
   username: string;
   email: string;
   status: boolean;
@@ -39,7 +39,7 @@ interface ProfileInformation {
   contact: string;
   job: string;
   destination: string;
-  createdAt: string;
+  created_at: string;
   imagePreviewUrl: any;
 }
 export default function EditProfileInformation() {
@@ -52,15 +52,15 @@ export default function EditProfileInformation() {
     id: user.id,
     imagePreviewUrl: undefined,
     username: user.username,
-    name: user.fullName,
+    full_name: user.full_name,
     email: user.email,
     contact: user.contact,
     destination: user.destination,
     job: user.job,
     role: user.role,
-    createdAt: user.createdAt,
+    created_at: user.created_at,
     status: user.status,
-    grantPermission: user.grantPermission,
+    grantPermission: user.grant,
   });
   const handleChange = (e: any) => {
     if (userData) {
@@ -90,7 +90,7 @@ export default function EditProfileInformation() {
     const formData = new FormData();
     formData.append("id", userData.id);
     formData.append("username", userData.username);
-    formData.append("name", userData.name);
+    formData.append("full_name", userData.full_name);
     formData.append("contact", userData.contact ? userData.contact : "");
     formData.append("email", userData.email);
     try {
@@ -101,7 +101,7 @@ export default function EditProfileInformation() {
         await setUser({
           ...user,
           username: userData.username,
-          fullName: userData.name,
+          full_name: userData.full_name,
           email: userData.email,
           contact: userData.contact,
         });
@@ -139,12 +139,12 @@ export default function EditProfileInformation() {
         <div className="grid gap-4 w-full sm:w-[70%] md:w-1/2">
           <CustomInput
             size_="md"
-            lable={t("name")}
-            name="name"
-            defaultValue={userData.name}
-            placeholder={t("enter your name")}
+            lable={t("full_name")}
+            name="full_name"
+            defaultValue={userData.full_name}
+            placeholder={t("enter_your_name")}
             type="text"
-            errorMessage={error.get("name")}
+            errorMessage={error.get("full_name")}
             onBlur={handleChange}
             startContent={
               <UserRound className="text-secondary-foreground size-[18px] pointer-events-none" />
@@ -217,7 +217,7 @@ export default function EditProfileInformation() {
               <CalendarDays className="size-[16px] text-tertiary absolute top-1/2 transform -translate-y-1/2 ltr:right-4 rtl:left-4" />
             }
             title={t("join_date")}
-            selected={toLocaleDate(new Date(user.createdAt), state)}
+            selected={toLocaleDate(new Date(user.created_at), state)}
           />
           <CustomCheckbox
             readOnly={true}
