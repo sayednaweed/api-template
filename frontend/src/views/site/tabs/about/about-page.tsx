@@ -19,8 +19,8 @@ export default function AboutPage() {
           height="100%"
         ></iframe>
       </div>
-      <div className="container px-6 md:px-12 mb-28">
-        <div className="block rounded-lg bg-[hsla(0,0%,100%,0.8)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  md:py-16 md:px-12 -mt-[250px] backdrop-blur-[30px] border border-gray-300">
+      <div className=" w-[90%] mx-auto px-6 md:px-12 mb-28 -mt-[64px]">
+        <div className="block rounded-lg bg-[hsla(0,0%,100%,0.8)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  md:py-16 md:px-12 backdrop-blur-[30px]">
           <h1 className=" text-center font-bold ltr:text-2xl-ltr rtl:text-3xl-rtl rounded-md bg-sky-200 p-4 text-primary ">
             {t("contact_us")}
           </h1>

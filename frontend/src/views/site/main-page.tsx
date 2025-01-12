@@ -8,7 +8,7 @@ export default function MainPage() {
 
   return (
     <section>
-      <header className="bg-primary dark:bg-primary/90 py-6 flex items-center justify-between px-4 rtl:text-2xl-rtl">
+      <header className="bg-primary dark:bg-secondary py-6 flex items-center justify-between px-4 rtl:text-2xl-rtl">
         <header className="flex text-primary-foreground space-x-4 rtl:gap-8 rtl:mr-4">
           <Link
             to="/home"
@@ -23,7 +23,7 @@ export default function MainPage() {
             to="/about"
             className={`${activeTab.startsWith("/about") && "border-b"}`}
           >
-            {t("about")}
+            {t("about_us")}
           </Link>
         </header>
         <div className="flex items-center justify-end  gap-3 ">

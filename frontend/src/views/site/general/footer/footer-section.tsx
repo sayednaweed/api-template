@@ -5,27 +5,30 @@ function FooterSection() {
 
   return (
     <>
-      <div className="flex flex-col justify-start bg-primary rtl:text-2xl-rtl ltr:text-md-ltr text-primary-foreground">
-        <div className="flex flex-col">
-          <h1>
-            {`${t("address")}: `}
-            <span className=" rtl:text-lg-rtl">{t("moph_address")}</span>
-          </h1>
-          <h1>
-            {`${t("email")}: `}
-            <span className=" rtl:text-lg-rtl">info@moph.gov.af</span>
-          </h1>
-          <h1>
-            {`${t("contact")}: `}
-            <span className=" rtl:text-lg-rtl">+93(0) 20 230 1374</span>
-          </h1>
+      <div className="p-4 flex flex-col justify-start bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground rtl:text-2xl-rtl ltr:text-lg-ltr">
+        <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1">
+          <h1 className="font-semibold">{`${t("address")}: `}</h1>
+          <span className=" rtl:text-lg-rtl text-primary-foreground/90 dark:text-card-foreground/90">
+            {t("moph_address")}
+          </span>
+          <h1 className="font-semibold">{`${t("email")}: `}</h1>
+          <span className="rtl:text-[14px] rtl:pt-1 text-primary-foreground/90 dark:text-card-foreground/90">
+            info@moph.gov.af
+          </span>
+          <h1 className="font-semibold">{`${t("contact")}: `}</h1>
+          <span className="rtl:text-[14px] rtl:pt-1 text-primary-foreground/90 dark:text-card-foreground/90">
+            +93(0) 20 230 1374
+          </span>
         </div>
-        <div className="flex items-center justify-end mt-10">
-          <p>{t("powered_by")}</p>
+        <div dir="ltr" className="flex gap-x-4 items-center mt-4">
+          <p className="text-xl-ltr font-semibold">Powered By:</p>
+          <p className="text-lg-ltr text-primary-foreground/90 dark:text-card-foreground/90">
+            Ministry of Public Health, Information Technology Directorate
+          </p>
         </div>
-        <div className="absolute border border-blue-500 mt-60 w-full p-3 ltr:text-right rtl:text-left right-0 bg-slate-700 text-sm">
-          {t("2024_ars")}
-        </div>
+      </div>
+      <div className="text-center text-lg-ltr p-4 bg-primary text-primary-foreground dark:bg-card dark:text-card-foreground dark:border-primary/10 border-t border-border/30">
+        {"Copyright © 2024 | MOPH. All Rights Reserved"}
       </div>
     </>
   );

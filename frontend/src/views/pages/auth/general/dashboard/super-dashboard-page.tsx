@@ -4,17 +4,6 @@ import DashboardCard from "@/components/custom-ui/card/DashboardCard";
 import BarChartTwo from "@/components/custom-ui/charts/bar/BarChartTwo";
 import BarChartOne from "@/components/custom-ui/charts/bar/BarChartOne";
 import PieChartOne from "@/components/custom-ui/charts/pie/PieChartOne";
-import AreaChartOne from "@/components/custom-ui/charts/area/areaChartOne";
-import AreaChartTow from "@/components/custom-ui/charts/area/areaChartTwo";
-import { AreaChartThree } from "@/components/custom-ui/charts/area/areaChartThree";
-import { AreaChartEleven } from "@/components/custom-ui/charts/area/areaChartEleven";
-import { AreaChartFour } from "@/components/custom-ui/charts/area/areaChartFour";
-import { AreaChartFive } from "@/components/custom-ui/charts/area/areaChartFive";
-import { AreaChartSix } from "@/components/custom-ui/charts/area/areaChartSix";
-import { AreaChartSeven } from "@/components/custom-ui/charts/area/areaChartSeven";
-import { AreaChartEight } from "@/components/custom-ui/charts/area/areaChartEight";
-import AreaChartNine from "@/components/custom-ui/charts/area/areaChartNine";
-import { AreaChartTen } from "@/components/custom-ui/charts/area/areaChartTen";
 import BarChartThree from "@/components/custom-ui/charts/bar/BarChartThree";
 import BarChartFour from "@/components/custom-ui/charts/bar/BarChartFour";
 import BarChartFive from "@/components/custom-ui/charts/bar/BarChartFive";
@@ -44,9 +33,7 @@ import LineChartTen from "@/components/custom-ui/charts/line/LineChartTen";
 import RadarChartOne from "@/components/custom-ui/charts/radar/RadarChartOne";
 import RadarChartTwo from "@/components/custom-ui/charts/radar/RadarChartTwo";
 import RadarChartThree from "@/components/custom-ui/charts/radar/RadarChartThree";
-import RadarChartOneFour from "@/components/custom-ui/charts/radar/RadarChartFour";
 import RadarChartFour from "@/components/custom-ui/charts/radar/RadarChartFour";
-import RadarChartOneFive from "@/components/custom-ui/charts/radar/RadarChartFive";
 import RadarChartSix from "@/components/custom-ui/charts/radar/RadarChartSix";
 import RadarChartSeven from "@/components/custom-ui/charts/radar/RadarChartSeven";
 import RadarChartEight from "@/components/custom-ui/charts/radar/RadarChartEight";
@@ -72,6 +59,17 @@ import TooltipChartSix from "@/components/custom-ui/charts/tooltip/TooltipChartS
 import TooltipChartSeven from "@/components/custom-ui/charts/tooltip/TooltipChartSeven";
 import TooltipChartEight from "@/components/custom-ui/charts/tooltip/TooltipChartEight";
 import TooltipChartNine from "@/components/custom-ui/charts/tooltip/TooltipChartNine";
+import AreaChartOne from "@/components/custom-ui/charts/area/AreaChartOne";
+import AreaChartTow from "@/components/custom-ui/charts/area/AreaChartTwo";
+import { AreaChartThree } from "@/components/custom-ui/charts/area/AreaChartThree";
+import { AreaChartFour } from "@/components/custom-ui/charts/area/AreaChartFour";
+import { AreaChartFive } from "@/components/custom-ui/charts/area/AreaChartFive";
+import { AreaChartSix } from "@/components/custom-ui/charts/area/AreaChartSix";
+import { AreaChartSeven } from "@/components/custom-ui/charts/area/AreaChartSeven";
+import { AreaChartEight } from "@/components/custom-ui/charts/area/AreaChartEight";
+import AreaChartNine from "@/components/custom-ui/charts/area/AreaChartNine";
+import { AreaChartTen } from "@/components/custom-ui/charts/area/AreaChartTen";
+import { AreaChartEleven } from "@/components/custom-ui/charts/area/AreaChartEleven";
 
 export default function SuperDashboardPage() {
   const { t } = useTranslation();
@@ -150,7 +148,7 @@ export default function SuperDashboardPage() {
         {/* )} */}
       </div>
       {/* Charts */}
-      <div className="grid md:grid-cols-5 md:grid-rows-1 gap-x-2 gap-y-4 px-2 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Area Charts  */}
         <AreaChartOne />
         <AreaChartTow />
